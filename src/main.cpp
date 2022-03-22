@@ -1,15 +1,17 @@
 #include <Arduino.h>
+#include <SSD1306.h>
 
-const int  LED = 2;
+SSD1306             display(0x3c, 4, 5, GEOMETRY_128_32);
+
 void setup() {
-  pinMode(LED, OUTPUT);
   // put your setup code here, to run once:
+  display.init();
+  display.flipScreenVertically();
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(10, 10, "Hello World");
+  display.display();
 }
 
 void loop() {
-  digitalWrite(LED, HIGH);
-  delay(500);
-  digitalWrite(LED, LOW);
-  delay(500);
   // put your main code here, to run repeatedly:
 }
